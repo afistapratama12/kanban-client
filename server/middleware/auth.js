@@ -1,28 +1,33 @@
 const { verifyToken } = require('../helper/jwt')
 
+const { User, Task } = require('../models')
 
-function auth (req, res, next) {
+
+
+async function auth (req, res, next) {
 
     const { access_token } = req.headers
 
     try {
 
         if( !access_token ) {
-            next({ name : 'authError' } ) 
+            next({ name : 'authError'} ) 
         } else {
             const decoded = verifyToken(access_token)
 
             req.loginUser = decoded
 
+            console.log(req.loginUser)
+
             const data = await User.findOne({ where :
-                {id : decoded.id}
+                { id : decoded.id }
             })
 
-            if(!data) {
-
-                next({ name : 'authError' })
-            } else {
+            if(data) {
+                // console.log(data)
                 next()
+            } else {
+                next({name : 'authError'})
             }
         }
 
@@ -31,15 +36,15 @@ function auth (req, res, next) {
     }
 }
 
-function author (req, res, next) {
+async function author (req, res, next) {
 
     let id = +req.params.id
 
     try {
-        const todo = await TodoList.findByPk(id)
+        const task = await Task.findByPk(id)
 
-        if(todo) {
-            if(todo.UserId == req.loginUser.id) {
+        if(task) {
+            if(task.UserId == req.loginUser.id) {
                 next()
 
             } else {

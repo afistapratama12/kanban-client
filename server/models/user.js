@@ -19,25 +19,19 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     fullname: {
       type : DataTypes.STRING,
+      allowNull : false,
       validate : {
         notEmpty : {
           args : true,
-          msg : 'full Name must be filled'
-        },
-        notNull : {
-          args : true,
-          msg : 'full Name must be filled'
+          msg : 'Email must be filled'
         }
       }
     },
     email: {
       type : DataTypes.STRING,
+      allowNull : false,
       validate : {
         notEmpty : {
-          args : true,
-          msg : 'Email must be filled'
-        },
-        notNull : {
           args : true,
           msg : 'Email must be filled'
         }
@@ -45,14 +39,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: {
       type : DataTypes.STRING,
+      allowNull : false,
       validate : {
         notEmpty : {
           args : true,
-          msg : 'password must be filled'
-        },
-        notNull : {
-          args : true,
-          msg : 'password must be filled'
+          msg : 'Email must be filled'
         }
       }
     },
@@ -60,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks : {
       beforeCreate : (user, option) => {
-        user.password = bcrypt.genPass(user.password)
+        user.password = genPass(user.password)
       }
     },
     sequelize,

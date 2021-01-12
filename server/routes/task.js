@@ -5,14 +5,15 @@ const {
 } = require('../middleware/auth')
 
 const TaskController = require('../controller/taskController')
+const errorHandler = require('../middleware/errorHandle')
 
-router.use(auth)
+// router.use(auth)
 
-router.get('/', TaskController.listTask)
-router.post('/', TaskController.addTask)
+router.get('/',auth, TaskController.listTask, errorHandler)
+router.post('/',auth, TaskController.addTask, errorHandler)
 
-router.put('/:id' ,author, TaskController.moveTask)
-router.delete('/:id', author, TaskController.deleteTask)
+router.put('/:id',auth, author, TaskController.moveTask, errorHandler)
+router.delete('/:id',auth, author, TaskController.deleteTask, errorHandler)
 
 
 module.exports = router

@@ -16,22 +16,22 @@ function errorHandler (err, req, res, next) {
                 break
 
             case "SequelizeUniqueConstraintError":
-                errMsg.messages = err.errors.map(err => err.message)
+                errMsg.message = err.errors.map(err => err.message)
                 res.status(400).json(errMsg)
                 break
         
             case "notFound":
-                errMsg.messages.push("Not found.")
+                errMsg.message.push("Not found.")
                 res.status(404).json(errMsg)
                 break
         
             case "authError":
-                errMsg.messages.push("Invalid email / password")
+                errMsg.message.push("Invalid email / password")
                 res.status(401).json(errMsg)
                 break
             
             default:
-                errMsg.messages.push("Error in internal server.")
+                errMsg.message.push("Error in internal server.")
                 res.status(500).json(errMsg)
                 break
         }

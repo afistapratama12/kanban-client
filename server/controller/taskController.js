@@ -12,11 +12,12 @@ class TaskController {
         }
     }
 
-    static addTask (req, res, next) {
+    static async addTask (req, res, next) {
         let newTask = {
             title : req.body.title,
             category : req.body.category,
             description : req.body.description,
+            // UserId : req.loginUser.id
             UserId : req.loginUser.id
         }
 
@@ -25,6 +26,7 @@ class TaskController {
 
             res.status(201).json({
                 msg : 'data successfull create',
+                id : data.id,
                 title : data.title,
                 category : data.category,
                 description : data.description
@@ -36,7 +38,7 @@ class TaskController {
 
     }
 
-    static moveTask(req, res, next) {
+    static async moveTask(req, res, next) {
         let taskId = +req.params.id
         let moveCategory = {
                 category : req.body.category
@@ -61,20 +63,20 @@ class TaskController {
 
     }
 
-    static deleteTask(req, res, next) {
-        let taskId = +req.params.id
+    static async deleteTask(req, res, next) {
+        let id = +req.params.id
 
         try {
             const data = await Task.destroy({where :
-                { id : taskId }
+                { id }
             })
 
             if(!data) {
                 next({ name : 'notFound' })
             } else {
                 res.status(200).json({
-                    id : todoId,
-                    message : 'Todo success to delete'
+                    // id : data.id,
+                    message : `Todo ${id} success to delete`
                 })
             }
 
