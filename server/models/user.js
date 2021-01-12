@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      User.hasMany(models.Task)
     }
   };
   User.init({
@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       validate : {
         notEmpty : {
+          args : true,
+          msg : 'full Name must be filled'
+        },
+        notNull : {
           args : true,
           msg : 'full Name must be filled'
         }
@@ -32,6 +36,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty : {
           args : true,
           msg : 'Email must be filled'
+        },
+        notNull : {
+          args : true,
+          msg : 'Email must be filled'
         }
       }
     },
@@ -39,6 +47,10 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       validate : {
         notEmpty : {
+          args : true,
+          msg : 'password must be filled'
+        },
+        notNull : {
           args : true,
           msg : 'password must be filled'
         }

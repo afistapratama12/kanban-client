@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Task.belongsTo(models.User)
     }
   };
   Task.init({
@@ -20,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty : {
           args : true,
           msg : 'title must be filled'
+        },
+        notNull : {
+          args : true,
+          msg : 'title must be filled'
         }
       }
     },
@@ -27,6 +32,10 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       validate : {
         notEmpty : {
+          args : true,
+          msg : 'Category must be filled'
+        },
+        notNull : {
           args : true,
           msg : 'Category must be filled'
         }
