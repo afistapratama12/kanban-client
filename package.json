@@ -1,0 +1,33 @@
+{
+  "name": "kanban",
+  "version": "1.0.0",
+  "description": "A simple kanban made with Electronjs, HTML, CSS, JS",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guiguat/Kanban.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guiguat/Kanban/issues"
+  },
+  "homepage": "https://github.com/guiguat/Kanban#readme",
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.2.0",
+    "electron": "^9.0.0",
+    "electron-builder": "^22.7.0",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "vue": "^2.6.12",
+    "vue-google-login": "^2.0.5",
+    "vue-hot-reload-api": "^2.3.4"
+  }
+}

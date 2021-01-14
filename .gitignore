@@ -1,0 +1,16 @@
+node_modules
+yarn.lock
+README.md
+client
+indexafis.html
+dist
+.cache
+server
+src/script.js
+src/style.css
+index2.html
+indexjq.html
+main2.js
+main.js
+script.js
+style.css
