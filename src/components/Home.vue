@@ -1,7 +1,7 @@
 <template>
   <!--  HOME MENU -->
-    <div class="containter-content" >
-        <div class="row content">
+    <div class="containter-main" >
+        <div class="row main-data">
           <p style="color: red;" > {{errAuth}}</p>
 
             <!--backlog-->
@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style>
-.content{
+.main-data{
     height: 36nw;
     display: flex;
     flex-direction: row;

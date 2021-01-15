@@ -1,6 +1,6 @@
 <template>
     <!-- ADD FORM TASK -->
-    <div class="container-form-add" >
+    <div class="container-add" >
         <form class="form-add" style="border : 1px">
             <h3 style="text-align : center">Add New Task</h3>
             <p style="color: red;" > {{errAdd}}</p>
@@ -52,7 +52,7 @@ export default {
 
 <style>
 
-.container-form-add{
+.container-add{
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -60,7 +60,8 @@ export default {
     font-weight: bold;   
     
 }
-.container-form-add .form-add{
+.container-add .form-add{
     align-self: center;
 }
+
 </style>

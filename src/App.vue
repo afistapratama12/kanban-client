@@ -1,5 +1,13 @@
 <template>
     <div>
+
+    <NavBar
+    v-if="halaman == 'login' || halaman == 'register'|| halaman == 'isi'||halaman == 'add'||halaman == 'edit'" 
+    @movePage="movePage"
+    @logout="logout"
+    :halaman="halaman">
+    </NavBar>
+
     <Home
     v-if="halaman == 'isi'"
     :backlog="backlog"
@@ -27,13 +35,6 @@
     :errorRegist="errorRegist">
     </RegisterForm>
 
-    <NavBar
-    v-if="halaman == 'login' || halaman == 'register'|| halaman == 'isi'||halaman == 'add'||halaman == 'edit'" 
-    @movePage="movePage"
-    @logout="logout"
-    :halaman="halaman">
-    </NavBar>
-
     <EditForm
     v-if="halaman == 'edit'"
     :edit="edit"
@@ -58,6 +59,7 @@ import RegisterForm from './components/RegisterForm'
 import Home from './components/Home'
 import EditForm from './components/EditForm'
 import AddForm from './components/AddForm'
+
 export default {
     name: 'App',
     data(){
@@ -165,10 +167,10 @@ export default {
 
         logout(){
             localStorage.clear()
-            let auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
+            // let auth2 = gapi.auth2.getAuthInstance();
+            // auth2.SignOut().then(function () {
+            //     console.log('User signed out.');
+            // });
             this.auth()
         },
 

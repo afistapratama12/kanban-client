@@ -1,6 +1,6 @@
 <template>
     <!-- LOGIN FORM -->
-    <div class="container-form-login" >
+    <div class="container-login" >
         <form class="form-login" >
           <h3 style="text-align : center">KANBAN Log In</h3>
             <div class="mb-3">
@@ -67,11 +67,11 @@ export default {
     
 }
 
-.container-form-login small{
+.container-login small{
   font-weight: normal;
 }
 
-.container-form-login .form-login{
+.container-login .form-login{
     align-self: center;
 }
 </style>

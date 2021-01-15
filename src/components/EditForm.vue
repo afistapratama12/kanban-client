@@ -1,6 +1,6 @@
 <template>
   <!-- EDIT FORM -->
-    <div class="container-form-add"  >
+    <div class="container-edit">
       <form class="form-add" >
         <h3 style="text-align : center">Edit Task</h3>
         <p style="color: red;">
