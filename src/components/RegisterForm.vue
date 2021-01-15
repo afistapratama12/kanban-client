@@ -1,105 +1,69 @@
 <template>
-  <div class="hero-body bg-img img-responsive">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <form class="box">
-            <div class="mb-2">
-              <h1>Register</h1>
+    <!-- REGISTER FORM -->
+    <div class="container-form-register" >
+        <form class="form-regist" style="border: 1px; border-radius:10px">
+          <h3 style="text-align : center">KANBAN Register</h3>
+            <div class="mb-3">
+                <label class="form-label">Full Name : </label>
+                <input type="text" class="form-control" v-model="regist.fullname" id="fullname-regis">
             </div>
-            <div class="field">
-              <label class="label">Full Name</label>
-              <div class="control has-icons-left">
-                <input
-                  type="text" class="input" placeholder="e.g. John Doe" v-model="fullname"
-                />
-                <span class="icon is-small is-left">
-                  <i class="fas fa-user-secret"></i>
-                </span>
+            <div class="mb-3">
+                <p style="color: red;" > {{errorRegist}}</p>
+              <label class="form-label">Email :</label>
+              <input type="email" class="form-control" id="email-regis" v-model="regist.email" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">
+                <small>We'll never share your email with anyone else.</small>
               </div>
             </div>
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control has-icons-left">
-                <input
-                  type="email" class="input" placeholder="email" v-model="email"
-                />
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
-              </div>
+            <div class="mb-3">
+              <label class="form-label">Password :</label>
+              <input type="password" class="form-control" v-model="regist.password" id="password-regis">
             </div>
-            <div class="field">
-              <label class="label">Password</label>
-              <div class="control has-icons-left">
-                <input
-                  type="password" class="input" placeholder="email" v-model="password"
-                />
-                <span class="icon is-small is-left">
-                  <i class="fa fa-lock"></i>
-                </span>
-              </div>
+            <br>
+            <div style="text-align : center">
+            <button type="submit" class="btn btn-primary" @click="register()">Register</button>
             </div>
-            <div class="has-text-centered">
-              <h4>
-                <a href="#" @click.prevent="toLogin">have an account ?</a>
-              </h4>
-            </div>
-            <div class="mt-2 has-text-centered">
-              <button class="button is-success" @click.prevent="register">
-                Register
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+        </form>
     </div>
-  </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-  name : "registerForm",
-  props : ['checkAcc'],
-  data() {
-    return {
-      fullname : '',
-      email : '',
-      password : ''
-    }
-  },
-  methods : {
-    getLogin(){
-      this.checkAcc(true)
+    name: 'RegisterForm',
+    props: ['errorRegist'],
+    data(){
+        return{
+            regist:{
+                email: '',
+                password: '',
+                fullname: ''
+            }
+        }
     },
 
-    register() {
-      axios({
-        method : 'POST',
-        url : 'http://localhost:4400/register',
-        data : {
-          fullname : this.fullname,
-          email : this.email,
-          password : this.password
+    methods:{
+        register(){
+            this.$emit('register', this.regist)
         }
-      })
-      .then(data => {
-        this.checkAcc(true)
-      })
-      .catch(err =>{
-        console.log(err)
-      })
     }
-  }
-};
+}
 </script>
 
-<style scoped>
-h1 {
-  font-weight: 600;
-  font-size: 2em;
-  text-align: center;
+<style>
+
+.container-form-register {
+    height: 42vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.container-form-register small {
+  font-weight: normal;
+}
+
+.container-form-register .form-regist{
+    align-self: center;
 }
 </style>
